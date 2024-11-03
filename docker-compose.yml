@@ -1,6 +1,0 @@
-version: '3.9'
-services:
-  boxwine:
-    build: .
-    stdin_open: true
-    tty: true
