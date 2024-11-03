@@ -55,6 +55,13 @@ COPY wrap-wine.sh /
 RUN bash /wrap-wine.sh \
  && rm /wrap-wine.sh
 
+RUN bash apt update && apt install unzip
+RUN wine wineboot && wine64 wineboot
+RUN xvfb-run sh -c "winetricks -q vcrun2019"
+RUN mkdir steamcmd && cd steamcmd
+RUN wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip
+RUN unzip steamcmd.zip
+
 WORKDIR /root
 ENTRYPOINT ["bash", "-c"]
 CMD ["bash"]
